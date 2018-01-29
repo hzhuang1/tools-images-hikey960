@@ -66,6 +66,7 @@ Bootloader
      <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
      <br>`cd ${BUILD_PATH}/l-loader`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl1.bin`</br>
+     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl2.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/fip.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/BL33_AP_UEFI.fd`</br>
      <br>`make hikey960`</br>
@@ -94,9 +95,9 @@ Bootloader
    * Fetch that are used in recovery mode. The code location is in below.
      [link](https://github.com/96boards-hikey/tools-images-hikey960)
 
-   * Generate l-loader.bin.
+   * Generate recovery.bin.
      <br>`$cd tools-images-hikey960`</br>
-     <br>`$ln -sf ${BUILD_PATH}/l-loader/l-loader.bin`</br>
+     <br>`$ln -sf ${BUILD_PATH}/l-loader/recovery.bin`</br>
      <br>`$ln -sf ${BUILD_PATH}/l-loader/fip.bin`</br>
 
    * Prepare config file.
@@ -104,12 +105,12 @@ Bootloader
      <br>_# The content of config file_</br>
      <br>`./sec_usb_xloader.img 0x00020000`</br>
      <br>`./sec_uce_boot.img 0x6A908000`</br>
-     <br>`./l-loader.bin 0x1AC00000`</br>
+     <br>`./recovery.bin 0x1AC00000`</br>
 
    * Remove the modemmanager package. This package may causes hikey_idt tool failure.
      <br>`$sudo apt-get purge modemmanager`</br>
 
-   * Run the command to download l-loader.bin into HiKey960.
+   * Run the command to download recovery.bin into HiKey960.
      <br>`$sudo ./hikey_idt -c config -p /dev/ttyUSB1`</br>
 
    * UEFI running in recovery mode.

@@ -22,3 +22,6 @@ fastboot flash ptable ${UEFI_BUILD_PATH}/prm_ptable.img
 fastboot flash xloader ${UEFI_BUILD_PATH}/sec_xloader.img
 fastboot flash fastboot ${UEFI_BUILD_PATH}/l-loader.bin
 fastboot flash fip ${UEFI_BUILD_PATH}/fip.bin
+
+# extra images
+fastboot flash nvme ${UEFI_BUILD_PATH}/nvme.img
